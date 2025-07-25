@@ -1,100 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #6a5af9;
+    --secondary-color: #f2f2f2;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, var(--primary-color), #a39bf3);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 420px;
 }
 
 .form-container {
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px var(--shadow-color);
     overflow: hidden;
+    position: relative;
+    transition: all 0.4s ease-in-out;
 }
 
 .form-toggle {
     display: flex;
+    background: var(--secondary-color);
 }
 
 .form-toggle button {
     flex: 1;
-    padding: 15px;
+    padding: 18px;
     border: none;
-    background: #eee;
+    background: transparent;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s;
+    font-weight: 600;
+    color: #888;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .form-toggle button.active {
-    background: #4CAF50;
-    color: white;
+    color: var(--primary-color);
+}
+
+.form-toggle button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
 }
 
 .form-content {
-    padding: 30px;
+    padding: 40px;
+    transition: all 0.4s ease;
 }
 
 .form-content h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
-    color: #333;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: 700;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #555;
+    font-weight: 500;
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 90, 249, 0.2);
 }
 
 .submit-btn {
     width: 100%;
-    padding: 12px;
-    background: #4CAF50;
+    padding: 15px;
+    background: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(106, 90, 249, 0.3);
 }
 
 .submit-btn:hover {
-    background: #45a049;
+    background: #5a4af1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(106, 90, 249, 0.4);
 }
 
 .message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 4px;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
     text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hidden {
@@ -102,11 +155,27 @@ body {
 }
 
 .success {
-    background: #dff0d8;
-    color: #3c763d;
+    background: #e9f9f0;
+    color: var(--success-color);
 }
 
 .error {
-    background: #f2dede;
-    color: #a94442;
+    background: #fbecec;
+    color: var(--error-color);
+}
+
+/* Add animations for form switching */
+#login-form, #register-form {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

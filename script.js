@@ -37,18 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!user) {
             message.textContent = 'Username tidak ditemukan!';
-            message.className = 'message error';
+            message.className = 'message error show';
             return;
         }
         
         if (user.password !== password) {
             message.textContent = 'Password salah!';
-            message.className = 'message error';
+            message.className = 'message error show';
             return;
         }
         
         message.textContent = 'Login berhasil! Mengarahkan...';
-        message.className = 'message success';
+        message.className = 'message success show';
         
         // Simpan informasi login
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (password !== confirmPassword) {
             message.textContent = 'Password dan konfirmasi password tidak cocok!';
-            message.className = 'message error';
+            message.className = 'message error show';
             return;
         }
         
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (users.some(u => u.username === username)) {
             message.textContent = 'Username sudah terdaftar!';
-            message.className = 'message error';
+            message.className = 'message error show';
             return;
         }
         
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('users', JSON.stringify(users));
         
         message.textContent = 'Pendaftaran berhasil! Silakan login.';
-        message.className = 'message success';
+        message.className = 'message success show';
         
         // Otomatis pindah ke form login
         setTimeout(() => {
